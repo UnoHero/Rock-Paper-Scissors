@@ -35,7 +35,6 @@
     background-color: lightgray;
     overflow: hidden;
     padding: 2.5%;
-    text-align: center;
 }
 .mainline{
     font-size:65px;
@@ -68,6 +67,7 @@
 }
 
 /*R.P.S*/
+
 #rulesbutton{
     padding: 1.2%;
     border-radius: 30%;
@@ -75,6 +75,32 @@
     position:absolute;
     left: 88%;
 }
+.displaybox{
+
+}
+.display{
+    justify-content: center;
+    display: inline-block;
+    
+}
+.tallyscore{
+
+}
+#tally{
+
+}
+.p1{   
+
+}
+.p2{
+
+}
+.placeholder{
+    max-width: 10%;
+    border-style: solid;
+    border-width: 0.2em;
+}
+
 /*rules*/
 #rules{
     margin: auto;
