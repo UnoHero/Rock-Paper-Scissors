@@ -1,5 +1,6 @@
 /*Site*/
 .page{
+    margin: 0;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
@@ -13,14 +14,12 @@
     box-sizing: border-box;
     text-align: center;
     background-color: gray;
-    margin-top: -45px;
-    margin-left: -10px
+    margin-top: -2.5%;
 }
 .headline{
     font-family: 'Courier New', Courier, monospace;
-    font-size:65px;
-    padding-top: 10px;
-    padding-bottom: 5px;
+    font-size:4em;
+    padding-top: 0.5%;
     margin-left: 10px;
 }
 
@@ -28,13 +27,14 @@
 .main{
     box-sizing: border-box;
     max-width: 297mm;
-    height: 420mm;
+    width: 297mm;
+    max-height: 420mm;
     margin: auto;
-    margin-top: -20px;
-    margin-bottom: 10px;
+    margin-top: -2%;
+    margin-bottom: -0.5%;
     background-color: lightgray;
     overflow: hidden;
-    padding: 35px;
+    padding: 2.5%;
     text-align: center;
 }
 .mainline{
@@ -42,14 +42,14 @@
     text-align: center;
 }
 .rock{
-    margin-right: 400px;
+    margin-right: 33%;
 
 }
 .paper{
     margin: auto;
 }
 .scissor{
-    margin-left: 400px;
+    margin-left: 33%;
 }
 
 /*Footer*/
@@ -57,14 +57,26 @@
     box-sizing: border-box;
     text-align: center;
     background-color: gray;
-    margin-top:10px;
-    margin-left: -10px;
-    margin-bottom: -10px;
-    padding: 15px;
+    margin-top:1%;
+    padding: 1%;
 }
 .inc{
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
-    font-size:15px;
-    letter-spacing: -1.4px;
+    font-size:0.9em;
+    letter-spacing: -0.2%;
+}
+
+/*R.P.S*/
+#rulesbutton{
+    padding: 1.2%;
+    border-radius: 30%;
+    font-size: 2em;
+    position:absolute;
+    left: 88%;
+}
+/*rules*/
+#rules{
+    margin: auto;
+    max-width: 70%;
 }
