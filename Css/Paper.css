@@ -101,7 +101,13 @@
 #tally{
     display: inline-block;
     position: relative;
-    bottom:30%;
+    bottom:35%;
+}
+.counterbox{
+    position:absolute;
+}
+.counter{
+
 }
 .title{
     font-size: 2em;
@@ -125,6 +131,7 @@
 }
 .start{
     margin-top: 3%;
+
 }
 .startbutton{
     max-width: 30%;
