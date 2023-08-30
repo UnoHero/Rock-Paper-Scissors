@@ -36,6 +36,7 @@
     background-color: lightgray;
     overflow: hidden;
     padding: 2.5%;
+    text-align: center;
 }
 .mainline{
     font-size:65px;
@@ -122,8 +123,15 @@
     border-width: 0.2em;
     max-width: 80%;
 }
-#interface{
+.start{
     margin-top: 3%;
+}
+.startbutton{
+    max-width: 30%;
+}
+#interface{
+    margin-top: 5%;
+    display: none;
 }
 .interfacebutton{
     max-width:60%;
@@ -131,7 +139,8 @@
     border-width: 0.1em;
     scale: 5.5;
     padding: 0.2%;
-    margin:6%
+    margin:6%;
+
 }
 /*rules*/
 #rules{
