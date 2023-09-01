@@ -28,81 +28,114 @@ let b2 = p2score.innerHTML
 start.addEventListener("click", (e) => {
     start.style.display = "none"
     buttons.style.display = "block"
-    counter.style.display = "block"
+    startNewRound()
     
     const totalRounds = 3
     function startNewRound() {
-        if (roundsPlayed < totalRounds) {
+        counter.innerHTML = i
 
-            
+        i = 3
+        setTimeout(() => {
+
+            results.style.display = "none"
             counter.style.display = "block"
-            timer = setInterval(function(){
-                if (i <= 1) {
-                    results.style.display = "block"
-                    clearInterval(timer)
-                    if (tooearly != ""){
-                        if (tooearly == "Rock") {
-                            computerchoice = "Paper"
-                        }
-                        if (tooearly == "Paper") {
-                            computerchoice = "Scissor"
-                        }
-                        if (tooearly == "Scissor") {
-                            computerchoice = "Rock"
-                        }
-                    } else {
-                        computerchoice = ai()
-                        setTimeout(() => {
-                            roundResoult = result(pick, computerchoice)
-                            console.log(roundResoult, "Won")
-
-                            if (results.textContent != `DRAW!`) {
-                                counter.style.display = "none"
-                                results.textContent = `${roundResoult} Won`
-                                if (roundResoult == "P1/User"){
-                                    p1score.textContent -= `${b1-1}`
-                                    playerWins++
-                                } else {
-                                    p2score.textContent -= `${b2-1}`
-                                    computerWins++
-                                }
-                                roundsPlayed++;
-                                startNewRound()
-                            }
-                        }, 1000)
-                    }
-
-                    console.log("AI chose: " + computerchoice);
-                    if(computerchoice === "Rock"){
-                        p2.src = "../Files/rock.png"
-                    }
-                    if(computerchoice === "Paper"){
-                        p2.src = "../Files/paper.png"
-                    }
-                    if(computerchoice === "Scissor"){
-                        p2.src = "../Files/scissor.png"
-            
-                    }
-                }
-
-                i-=1
+            results.textContent = ``
+            p1.src = "../Files/QuestionMark.png"
+            p2.src = "../Files/QuestionMark.png"
+            pick = ""
+            tooearly = ""
+            if (roundsPlayed < totalRounds && p1score != 2 && p2score != 2) {
                 counter.innerHTML = i
+                counter.style.display = "block"
+                timer = setInterval(function(){
+                    if (i <= 1) {
+                        
+                        results.style.display = "block"
+                        clearInterval(timer)
+                        if (tooearly != ""){
+                            if (tooearly == "Rock") {
+                                computerchoice = "Paper"
+                            }
+                            if (tooearly == "Paper") {
+                                computerchoice = "Scissor"
+                            }
+                            if (tooearly == "Scissor") {
+                                computerchoice = "Rock"
+                            }
+                        } else {
+                            computerchoice = ai()
+                            setTimeout(() => {
+                                roundResoult = result(pick, computerchoice)
+                                console.log(roundResoult, "Won")
+                                counter.style.display = "none"
+                                if (results.textContent != `DRAW!`) {
+                                    results.textContent = `${roundResoult} Won`
+                                    counter.style.display = "none"
+                                    if (roundResoult == "P1/User"){
+                                        p1score.textContent -= `${b1-1}`
+                                        playerWins++
+                                    } else {
+                                        p2score.textContent -= `${b2-1}`
+                                        computerWins++
+                                    }
+                                    roundsPlayed++;
+                                    startNewRound()
+                                }
+                            }, 1000)
+                        }
+
+                        console.log("AI chose: " + computerchoice);
+                        if(computerchoice === "Rock"){
+                            p2.src = "../Files/rock.png"
+                        }
+                        if(computerchoice === "Paper"){
+                            p2.src = "../Files/paper.png"
+                        }
+                        if(computerchoice === "Scissor"){
+                            p2.src = "../Files/scissor.png"
                 
-            },1000)
-            i = 3
-        } else {
-            if (playerWins > computerWins) {
-                console.log("Player wins the game!")
-            }else if (computerWins > playerWins) {
-                console.log("Computer wins the game!");
+                        }
+
+                        function result(pick, computerchoice) {
+                            console.log("Results function called")
+                            setTimeout(() => {
+                            }, 1000);
+                            if (computerchoice == pick) {
+                                counter.style.display = "none"
+                                results.style.display = "block"
+                                results.textContent = `DRAW!`
+                                startNewRound()
+                            } else if (
+                                (pick === "Rock" && computerchoice === "Scissor") ||
+                                (pick === "Scissor" && computerchoice === "Paper") ||
+                                (pick === "Paper" && computerchoice === "Rock") 
+                            ) {
+                                return "P1/User"
+                            } else {
+                                return "P2/Ai"
+                            }
+                        }
+                    }
+                    
+                    i-=1
+                    counter.innerHTML = i
+                    
+                    
+                },1000)
             } else {
-                console.log("It's a tie!");
+                if (playerWins > computerWins) {
+                    console.log("Player wins the game!")
+                }else if (computerWins > playerWins) {
+                    console.log("Computer wins the game!");
+                } else {
+                    console.log("It's a tie!");
+                }
             }
-        }
+            
+        }, 1000)
+    
         
     }
-    
-    startNewRound()
 })
 
 
@@ -113,6 +146,7 @@ rock.addEventListener("click", (e) => {
         console.log("you",tooearly);
     }
     pick = "Rock"
+    
 })  
 paper.addEventListener("click", (e) => {
     p1.src = "../Files/paper.png"
@@ -144,21 +178,5 @@ function ai() {
     }
 }
 
-function result(pick, computerchoice) {
-    console.log("Results function called")
-    if (computerchoice == pick) {
-        counter.style.display = "none"
-        results.style.display = "block"
-        results.textContent = `DRAW!`
-        startNewRound()
-    } else if (
-        (pick === "Rock" && computerchoice === "Scissor") ||
-        (pick === "Scissor" && computerchoice === "Paper") ||
-        (pick === "Paper" && computerchoice === "Rock") 
-    ) {
-        return "P1/User"
-    } else {
-        return "P2/Ai"
-    }
-}
+
 
