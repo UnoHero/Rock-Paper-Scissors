@@ -1,5 +1,6 @@
 
 const start = document.querySelector(".start")
+const startbutton = document.querySelector(".startbutton")
 const buttons = document.getElementById("interface")
 const counter = document.querySelector(".counter")
 const counterbox = document.querySelector(".counterbox")
@@ -13,8 +14,11 @@ const p1score = document.querySelector(".tallyp1")
 const p2score = document.querySelector(".tallyp2")
 const scoreseperator = document.querySelector(".tallyseperator")
 const results = document.querySelector(".results")
+const round = document.querySelector(".roundcount")
+
 
 let i = 3
+let l = 1
 let tooearly = ""
 let pick = ""
 
@@ -29,11 +33,19 @@ start.addEventListener("click", (e) => {
     start.style.display = "none"
     buttons.style.display = "block"
     startNewRound()
-    
+    round.textContent = `Round ${l}`
+    if (playerWins > computerWins) {
+        p1score.textContent -= `${b1+playerWins}`
+
+    } else if (computerWins > playerWins){
+        p2score.textContent -= `${b2+computerWins}`
+    }
+    playerWins = 0
+    computerWins = 0
+    roundsPlayed = 0
     const totalRounds = 3
     function startNewRound() {
         counter.innerHTML = i
-
         i = 3
         setTimeout(() => {
 
@@ -123,6 +135,14 @@ start.addEventListener("click", (e) => {
                     
                 },1000)
             } else {
+                startbutton.src = "../Files/playagain.jpg"
+                buttons.style.display = "none"
+                start.style.display = "block"
+                roundsPlayed = 0
+
+                l++
+
+
                 if (playerWins > computerWins) {
                     console.log("Player wins the game!")
                 }else if (computerWins > playerWins) {
