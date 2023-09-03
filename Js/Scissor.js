@@ -34,6 +34,7 @@ start.addEventListener("click", (e) => {
     buttons.style.display = "block"
     startNewRound()
     round.textContent = `Round ${l}`
+
     if (playerWins > computerWins) {
         p1score.textContent -= `${b1+playerWins}`
 
@@ -45,6 +46,7 @@ start.addEventListener("click", (e) => {
     roundsPlayed = 0
     const totalRounds = 3
     function startNewRound() {
+        buttons.style.display = "block"
         counter.innerHTML = i
         i = 3
         setTimeout(() => {
@@ -67,12 +69,68 @@ start.addEventListener("click", (e) => {
                         if (tooearly != ""){
                             if (tooearly == "Rock") {
                                 computerchoice = "Paper"
+                                setTimeout(() => {
+                                    roundResoult = result(pick, computerchoice)
+                                    console.log(roundResoult, "Won")
+                                    counter.style.display = "none"
+                                    if (results.textContent != `DRAW!`) {
+                                        results.textContent = `${roundResoult} Won`
+                                        counter.style.display = "none"
+                                        if (roundResoult == "P1/User"){
+                                            p1score.textContent -= `${b1-1}`
+                                            playerWins++
+                                        } else {
+                                            p2score.textContent -= `${b2-1}`
+                                            computerWins++
+                                        }
+                                        roundsPlayed++;
+                                        startNewRound()
+                                    }
+                                }, 1000)
                             }
                             if (tooearly == "Paper") {
                                 computerchoice = "Scissor"
+                                setTimeout(() => {
+                                    roundResoult = result(pick, computerchoice)
+                                    console.log(roundResoult, "Won")
+                                    counter.style.display = "none"
+                                    if (results.textContent != `DRAW!`) {
+                                        results.textContent = `${roundResoult} Won`
+                                        counter.style.display = "none"
+                                        if (roundResoult == "P1/User"){
+                                            p1score.textContent -= `${b1-1}`
+                                            playerWins++
+                                        } else {
+                                            p2score.textContent -= `${b2-1}`
+                                            computerWins++
+                                        }
+                                        roundsPlayed++;
+                                        startNewRound()
+                                    }
+                                }, 1000)
                             }
                             if (tooearly == "Scissor") {
                                 computerchoice = "Rock"
+                                setTimeout(() => {
+                                    roundResoult = result(pick, computerchoice)
+                                    console.log(roundResoult, "Won")
+                                    counter.style.display = "none"
+                                    if (results.textContent != `DRAW!`) {
+                                        results.textContent = `${roundResoult} Won`
+                                        counter.style.display = "none"
+                                        if (roundResoult == "P1/User"){
+                                            p1score.textContent -= `${b1-1}`
+                                            playerWins++
+                                        } else {
+                                            p2score.textContent -= `${b2-1}`
+                                            computerWins++
+                                        }
+                                        roundsPlayed++;
+                                        startNewRound()
+                                    }
+                                }, 1000)
+                            } else {
+                                console.log("Error");
                             }
                         } else {
                             computerchoice = ai()
@@ -152,7 +210,7 @@ start.addEventListener("click", (e) => {
                 }
             }
             
-        }, 1000)
+        },500)
     
         
     }
@@ -166,8 +224,21 @@ rock.addEventListener("click", (e) => {
         console.log("you",tooearly);
     }
     pick = "Rock"
+    buttons.style.display = "none"
     
 })  
+document.addEventListener("keydown", function(event) {
+    if (event.key === "1"){
+        p1.src = "../Files/rock.png"
+        if (i > 1){
+            tooearly = "Rock"
+            console.log("you",tooearly);
+        }
+        pick = "Rock"
+        buttons.style.display = "none"
+    }
+})
+
 paper.addEventListener("click", (e) => {
     p1.src = "../Files/paper.png"
     if (i > 1){
@@ -176,7 +247,21 @@ paper.addEventListener("click", (e) => {
         
     }
     pick = "Paper"
+    buttons.style.display = "none"
 })  
+document.addEventListener("keydown", function(event) {
+    if (event.key === "2") {
+        p1.src = "../Files/paper.png"
+        if (i > 1){
+            tooearly = "Paper"
+            console.log("you",tooearly);
+            
+        }
+        pick = "Paper"
+        buttons.style.display = "none"
+    }
+})
+
 scissor.addEventListener("click", (e) => {
     p1.src = "../Files/scissor.png"
     if (i > 1){
@@ -185,8 +270,20 @@ scissor.addEventListener("click", (e) => {
         
     }
     pick = "Scissor"
+    buttons.style.display = "none"
 })  
-
+document.addEventListener("keydown", function(event){
+    if (event.key === "3") {
+        p1.src = "../Files/scissor.png"
+        if (i > 1){
+            tooearly = "Scissor"
+            console.log("you",tooearly);
+            
+        }
+        pick = "Scissor"
+        buttons.style.display = "none"
+    }
+})
 
 
 function ai() {
