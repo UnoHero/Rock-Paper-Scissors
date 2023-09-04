@@ -32,12 +32,13 @@ let roundsPlayed = 0
 let b1 = p1score.innerHTML 
 let b2 = p2score.innerHTML
 
+
+
 start.addEventListener("click", (e) => {
     start.style.display = "none"
     buttons.style.display = "block"
     startNewRound()
     round.textContent = `Round ${l}`
-
     if (playerWins > computerWins) {
         p1score.textContent -= `${b1+playerWins}`
 
@@ -53,7 +54,6 @@ start.addEventListener("click", (e) => {
         counter.innerHTML = i
         i = 3
         setTimeout(() => {
-
             results.style.display = "none"
             counter.style.display = "block"
             results.textContent = ``
@@ -64,12 +64,31 @@ start.addEventListener("click", (e) => {
             if (roundsPlayed < totalRounds && p1score != 2 && p2score != 2) {
                 counter.innerHTML = i
                 counter.style.display = "block"
+                if (pick == "") {
+                    rotationp1 = setInterval(() => {
+                        p1.src = rotate();
+                        if (i == 0) {
+                            clearInterval(rotationp1);
+                        }
+                    }, 250);
+                }
+                if (i >= 0 ) {
+                    rotationp2 = setInterval(() => {
+                        p2.src = rotate();
+                        console.log("run");
+                        if (i == 0) {
+                            clearInterval(rotationp2);
+                        }
+                    }, 250);
+                }
                 timer = setInterval(function(){
+
                     if (i <= 1) {
                         
                         results.style.display = "block"
                         clearInterval(timer)
                         if (tooearly != ""){
+                            console.log(tooearly)
                             if (tooearly == "Rock") {
                                 computerchoice = "Paper"
                                 setTimeout(() => {
@@ -208,6 +227,7 @@ start.addEventListener("click", (e) => {
             } else {
                 startbutton.src = "../Files/playagain.jpg"
                 roundaudio.play()
+
                 buttons.style.display = "none"
                 start.style.display = "block"
                 roundsPlayed = 0
@@ -239,7 +259,8 @@ rock.addEventListener("click", (e) => {
     }
     pick = "Rock"
     buttons.style.display = "none"
-    
+    clearInterval(rotationp1);
+    clearInterval(rotationp2)
 })  
 document.addEventListener("keydown", function(event) {
     if (event.key === "1"){
@@ -250,7 +271,10 @@ document.addEventListener("keydown", function(event) {
         }
         pick = "Rock"
         buttons.style.display = "none"
+        
     }
+    clearInterval(rotationp1);
+    clearInterval(rotationp2);
 })
 
 paper.addEventListener("click", (e) => {
@@ -262,6 +286,8 @@ paper.addEventListener("click", (e) => {
     }
     pick = "Paper"
     buttons.style.display = "none"
+    clearInterval(rotationp1);
+    clearInterval(rotationp2)
 })  
 document.addEventListener("keydown", function(event) {
     if (event.key === "2") {
@@ -274,6 +300,8 @@ document.addEventListener("keydown", function(event) {
         pick = "Paper"
         buttons.style.display = "none"
     }
+    clearInterval(rotationp1);
+    clearInterval(rotationp2)
 })
 
 scissor.addEventListener("click", (e) => {
@@ -285,6 +313,8 @@ scissor.addEventListener("click", (e) => {
     }
     pick = "Scissor"
     buttons.style.display = "none"
+    clearInterval(rotationp1);
+    clearInterval(rotationp2)
 })  
 document.addEventListener("keydown", function(event){
     if (event.key === "3") {
@@ -297,6 +327,8 @@ document.addEventListener("keydown", function(event){
         pick = "Scissor"
         buttons.style.display = "none"
     }
+    clearInterval(rotationp1);
+    clearInterval(rotationp2)
 })
 
 
@@ -309,5 +341,16 @@ function ai() {
     }
 }
 
+function rotate() {
+    if (pick == ""){
+        const pic = ["../Files/scissor.png", "../Files/paper.png", "../Files/rock.png"];
+        const randomIndex = Math.floor(Math.random() * pic.length);
+        //console.log(`randomIndex = ${randomIndex}`);
+        pick = "";
+        return pic[randomIndex];
+        
+    }
+    
+}
 
 

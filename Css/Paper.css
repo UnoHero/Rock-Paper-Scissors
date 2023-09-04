@@ -66,6 +66,15 @@
     font-family: 'Courier New', Courier, monospace;
     font-size:0.9em;
     letter-spacing: -0.2%;
+    animation: footer 15s infinite;
+    position: relative;
+
+}
+
+/*Animation*/
+@keyframes footer {
+    from { left: -10%;}
+    to {left: 110%;}
 }
 
 /*R.P.S*/
