@@ -15,7 +15,10 @@ const p2score = document.querySelector(".tallyp2")
 const scoreseperator = document.querySelector(".tallyseperator")
 const results = document.querySelector(".results")
 const round = document.querySelector(".roundcount")
-
+const winaudio = document.getElementById("winaudio")
+const loseaudio = document.getElementById("loseaudio")
+const drawaudio = document.getElementById("drawaudio")
+const roundaudio = document.getElementById("roundaudio")
 
 let i = 3
 let l = 1
@@ -79,9 +82,11 @@ start.addEventListener("click", (e) => {
                                         if (roundResoult == "P1/User"){
                                             p1score.textContent -= `${b1-1}`
                                             playerWins++
+                                            winaudio.play()
                                         } else {
                                             p2score.textContent -= `${b2-1}`
                                             computerWins++
+                                            loseaudio.play()
                                         }
                                         roundsPlayed++;
                                         startNewRound()
@@ -100,9 +105,11 @@ start.addEventListener("click", (e) => {
                                         if (roundResoult == "P1/User"){
                                             p1score.textContent -= `${b1-1}`
                                             playerWins++
+                                            winaudio.play()
                                         } else {
                                             p2score.textContent -= `${b2-1}`
                                             computerWins++
+                                            loseaudio.play()
                                         }
                                         roundsPlayed++;
                                         startNewRound()
@@ -121,9 +128,11 @@ start.addEventListener("click", (e) => {
                                         if (roundResoult == "P1/User"){
                                             p1score.textContent -= `${b1-1}`
                                             playerWins++
+                                            winaudio.play()
                                         } else {
                                             p2score.textContent -= `${b2-1}`
                                             computerWins++
+                                            loseaudio.play()
                                         }
                                         roundsPlayed++;
                                         startNewRound()
@@ -144,12 +153,15 @@ start.addEventListener("click", (e) => {
                                     if (roundResoult == "P1/User"){
                                         p1score.textContent -= `${b1-1}`
                                         playerWins++
+                                        winaudio.play()
                                     } else {
                                         p2score.textContent -= `${b2-1}`
                                         computerWins++
+                                        loseaudio.play()
                                     }
                                     roundsPlayed++;
                                     startNewRound()
+                                    
                                 }
                             }, 1000)
                         }
@@ -174,6 +186,7 @@ start.addEventListener("click", (e) => {
                                 counter.style.display = "none"
                                 results.style.display = "block"
                                 results.textContent = `DRAW!`
+                                drawaudio.play()
                                 startNewRound()
                             } else if (
                                 (pick === "Rock" && computerchoice === "Scissor") ||
@@ -194,6 +207,7 @@ start.addEventListener("click", (e) => {
                 },1000)
             } else {
                 startbutton.src = "../Files/playagain.jpg"
+                roundaudio.play()
                 buttons.style.display = "none"
                 start.style.display = "block"
                 roundsPlayed = 0
