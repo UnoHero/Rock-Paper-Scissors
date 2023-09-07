@@ -198,6 +198,7 @@ function startNewRound() {
                     
                     results.style.display = "block"
                     clearInterval(timer)
+                    //this if wil run if you were to early with your choise.
                     if (tooearly != ""){
                         console.log(tooearly)
                         if (tooearly == "Rock") {
@@ -272,6 +273,7 @@ function startNewRound() {
                             console.log("Error");
                         }
                     } else {
+                        //If you chouse at 1 sec the ai function wil run and it will be random ho win's.
                         computerchoice = ai()
                         setTimeout(() => {
                             roundResoult = result(pick, computerchoice)
