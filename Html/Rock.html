@@ -8,9 +8,11 @@
     <script src="https://kit.fontawesome.com/f515522c60.js" crossorigin="anonymous"></script>
 </head>
 <body class="page">
+    <!--The headline and the box/div for it.-->
     <div class="header">
         <h1 class="headline">R.P.S</h1>
     </div>
+        <!--The "Button" that moves you to the Rules.html file-->
         <button id="rulesbutton" >
             <a href="./Rules.html">           
                 Click
@@ -20,28 +22,36 @@
                 Rules
             </a>
         </button>
+        <!--The big box in the center of the site.-->
     <div class="main">
+        <!--The aria were the game wil be displayd.-->
         <div class="displaybox">
+            <!--The round wil be displayd here.-->
             <div id="round">
                 <H2 class="roundcount">Round 1</H2>
             </div>
+            <!--Were p1's chopise wil be displayd.-->
             <div class="p1 display ">
                 <p class="title">P1/User</p>
                 <img class="placeholder p1img" src="../Files/QuestionMark.png" alt="Placeholder befour play">
             </div>
+            <!-- Here wil the round score be displayd.-->
             <div id="tally">
                 <p class="tallyp1 tallyscore display">0</p>
                 <p class="tallyseperator tallyscore display">/</p>
                 <p class="tallyp2 tallyscore display">0</p>
             </div>
+            <!-- Here wil the round's countdown from 3 be displayd and the resoult of eatch round.-->
             <div class="counterbox">
                 <p class="counter">3</p>
                 <p class="results"></p>
             </div>
+            <!--Were p2's chopise wil be displayd.-->
             <div class="p2 display ">
                 <p class="title">P2/AI</p>
                 <img class="placeholder p2img" src="../Files/QuestionMark.png" alt="Placeholder befour play">
             </div>
+            <!--The button that starts the game. and/or replays.-->
             <div class="start">
                 <img class="startbutton" src="../Files/Start-Button.png" alt="star button">
             </div>    
@@ -52,10 +62,12 @@
           </div>
         </div>
     </div>
+    <!--The text at the bottom of the page.-->
     <div class="footer">
         <p class="inc">© 2023 Rock-Paper-Scissor, Inc.</p>
     </div>
 
+    <!--Links to all sound used.-->
     <audio id = roundaudio src="../Audio/RoundWin.wav"></audio>
     <audio id = winaudio src="../Audio/Win.wav"></audio>
     <audio id = loseaudio src="../Audio/Lose.wav"></audio>
